@@ -41,4 +41,6 @@ Have the language options either be in Japanese or English!
 - [ ] Create toggle button that switches between English and Japanese
     - This might need a separate enum for English and Japanese?
     - Maybe use tenary operation if it works?
+        - Possibly, use @State and a bool to switch between languages
+            - Limitations: This only works for two languages. A different work around would be needed when three or more languages are options.
     - Placement to be determined(TBD). Possible placement: top-right(top trailing)?
