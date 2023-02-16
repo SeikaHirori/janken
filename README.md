@@ -23,8 +23,8 @@ ___
 ___
 **Checklist | Challenge Specifications (CS)**
 
-- [ ] 1. Start with an App template, then create a property to store the three possible moves: rock, paper, and scissors.
-- [ ] 2. You’ll need to create two @State properties to store the app’s current choice and whether the player should win or lose.
+- [x] 1. Start with an App template, then create a property to store the three possible moves: rock, paper, and scissors.
+- [x] 2. You’ll need to create two @State properties to store the app’s current choice and whether the player should win or lose.
 - [ ] 3. You can use Int.random(in:) to select a random move. You can use it for whether the player should win too if you want, but there’s an even easier choice: Bool.random() is randomly true or false. After the initial value, use toggle() between rounds so it’s always changing.
 - [ ] 4. Create a VStack showing the player’s score, the app’s move, and whether the player should win or lose. You can use if shouldWin to return one of two different text views.
 - [ ] 5. The important part is making three buttons that respond to the player’s move: Rock, Paper, or Scissors.

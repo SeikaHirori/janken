@@ -22,3 +22,9 @@ enum rockPaperScissors:Int, CaseIterable {
     case paper = 1
     case scissor = 2
 }
+
+enum resultRPS:String {
+    case win = "Win :D"
+    case lost = "Lost :'("
+    case tie = "Tie :O"
+}

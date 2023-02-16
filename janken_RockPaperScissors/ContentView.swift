@@ -12,6 +12,9 @@ struct ContentView: View {
     @State private var currentLanguage:[String] = ["グー (guu)","パー (paa)" ,"チョキ　(choki)"] // Default to Japanese on launch
     @State private var useEnglish:Bool = false
     
+    @State private var app_RPS_choice: Int = 0 // CS #2
+    @State private var playerWins: Bool = true // CS #2
+    
     var body: some View {
         listRPS
     }
