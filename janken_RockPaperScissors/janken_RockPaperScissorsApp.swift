@@ -15,3 +15,10 @@ struct janken_RockPaperScissorsApp: App {
         }
     }
 }
+
+
+enum rockPaperScissors:Int, CaseIterable {
+    case rock = 0
+    case paper = 1
+    case scissor = 2
+}
