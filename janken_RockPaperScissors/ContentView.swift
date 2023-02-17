@@ -21,6 +21,10 @@ struct ContentView: View {
     
     @State private var score_player_victories_count:Int = 0
     @State private var previousScore: String = "Previous score: NA (this is 1st round)" // Track score for debugging purposes
+    @State private var resultFromLastRound:String = """
+Result:
+new round :3
+"""
     
     var body: some View {
         VStack {
@@ -33,7 +37,9 @@ struct ContentView: View {
                 switchLanguage()
             }
             .settings_style()
-            
+            Text(resultFromLastRound)
+                .multilineTextAlignment(.center)
+                .appSelected_style()
             debugInformation
         }
     }
@@ -73,11 +79,21 @@ struct ContentView: View {
             Text("Round: \(currentRound)")
                 .roundTitleCount()
             Text("Score: \(score_player_victories_count)")
-            Text("\(message_pick_the_option)")
-                .appSelected_style()
-            Text(message_you_should_try_to)
-                .multilineTextAlignment(.center)
-                .appSelected_style()
+                .frame(maxWidth: 100, maxHeight: 50)
+                .font(.title2)
+                .background(Color(uiColor: .darkGray))
+                .foregroundColor(.white)
+            
+            HStack(spacing: 20) {
+                Text("\(message_pick_the_option)")
+                    .appSelected_style()
+                Text(message_you_should_try_to)
+                    .multilineTextAlignment(.center)
+                    .appSelected_style()
+                
+            }
+
+           
             
         }
     }
@@ -137,9 +153,13 @@ struct ContentView: View {
         default:
             break
         }
-                
+        
+        let template_message_lastRound:String = "Last round:\n"
         if didPlayerWin == should_Player_Win {
             victoryMeansPlusOneToScore()
+            resultFromLastRound = "\(template_message_lastRound):D"
+        } else {
+            resultFromLastRound = "\(template_message_lastRound)... :'["
         }
         
     }
@@ -232,6 +252,7 @@ struct AppSelectedStyle: ViewModifier {
             .multilineTextAlignment(.center)
             .frame(maxWidth: 160,maxHeight: 50)
             .background(Color.cyan)
+            .foregroundColor(.white)
             .clipShape(Capsule())
     }
 }

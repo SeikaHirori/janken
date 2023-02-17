@@ -1,5 +1,8 @@
 # Janken「じゃんけんぽん」| Rock, Papers, Scissors
 
+**Reflection:**
+- TBA at [SeikaHirori.blogspot.com](SeikaHirori.blogspot.com)
+
 ***House Keeping***
 
 Project specifications:
@@ -26,9 +29,9 @@ ___
 - [x] 1. Start with an App template, then create a property to store the three possible moves: rock, paper, and scissors.
 - [x] 2. You’ll need to create two @State properties to store the app’s current choice and whether the player should win or lose.
 - [x] 3. You can use Int.random(in:) to select a random move. You can use it for whether the player should win too if you want, but there’s an even easier choice: Bool.random() is randomly true or false. After the initial value, use toggle() between rounds so it’s always changing.
-- [ ] 4. Create a VStack showing the player’s score, the app’s move, and whether the player should win or lose. You can use if shouldWin to return one of two different text views.
+- [s] 4. Create a VStack showing the player’s score, the app’s move, and whether the player should win or lose. You can use if shouldWin to return one of two different text views.
 - [x] 5. The important part is making three buttons that respond to the player’s move: Rock, Paper, or Scissors.
-- [ ] 6. Use the font() modifier to adjust the size of your text. If you’re using emoji for the three moves, they also scale. Tip: You can ask for very large system fonts using .font(.system(size: 200)) – they’ll be a fixed size, but at least you can make sure they are nice and big!
+- [s] 6. Use the font() modifier to adjust the size of your text. If you’re using emoji for the three moves, they also scale. Tip: You can ask for very large system fonts using .font(.system(size: 200)) – they’ll be a fixed size, but at least you can make sure they are nice and big!
 
 ___
 **Checklist | Personal Specifications (PS)**
@@ -37,8 +40,10 @@ Have the language options either be in Japanese or English!
     - Info on Janken and eng-japanese translation:
         - https://www.tofugu.com/japan/janken/
 
-- [ ] Create two enums for English and Japanese versions of rock, paper, scissor
-- [ ] 1. Create toggle button that switches between English and Japanese
+- [-] Create two enums for English and Japanese versions of rock, paper, scissor
+    - Created an array of strings for both languages as it is logically easier to handle at the moment.
+        - Plus for scaling, it'll be easier if additional languages are added.
+- [x] 1. Create toggle button that switches between English and Japanese
     - This might need a separate enum for English and Japanese?
     - Maybe use tenary operation if it works?
         - Possibly, use @State and a bool to switch between languages
