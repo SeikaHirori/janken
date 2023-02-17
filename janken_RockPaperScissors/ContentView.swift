@@ -32,11 +32,13 @@ new round :3
             headsUpDisplay
             listRPS
             
-            Button("\(switchToLang)") {
-                useEnglish.toggle()
-                switchLanguage()
+            ZStack(alignment: .topTrailing){
+                Button("\(switchToLang)") {
+                    useEnglish.toggle()
+                    switchLanguage()
+                }
+                .settings_style()
             }
-            .settings_style()
             Text(resultFromLastRound)
                 .multilineTextAlignment(.center)
                 .appSelected_style()
