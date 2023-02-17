@@ -20,7 +20,7 @@ struct ContentView: View {
     @State private var currentRound: Int = 1
     
     @State private var score_player_victories_count:Int = 0
-    @State private var previousScore: String = "" // Track score for debugging purposes
+    @State private var previousScore: String = "Previous score: NA (this is 1st round)" // Track score for debugging purposes
     
     var body: some View {
         VStack {
@@ -34,12 +34,7 @@ struct ContentView: View {
             }
             .settings_style()
             
-            
-            
-            
-            Text("debug | bot chose: \(app_RPS_choice)")
-            
-            
+            debugInformation
         }
     }
     
@@ -54,6 +49,7 @@ struct ContentView: View {
                 
                 Button {
                     playerSelectChoice_fightTime(currentChoice)
+                    nextRound()
                 } label: {
                     Text("\(itemValue)")
                 }
@@ -65,16 +61,32 @@ struct ContentView: View {
     // CS #4
     var headsUpDisplay: some View {
 
-        VStack {
-            let template_app_selected:String = "App selected: "
-            var win_or_lose:String = should_Player_Win ? "Win" : "Lose"
-            var message:String = template_app_selected + win_or_lose
+        VStack(spacing: 10) {
+            let template_app_selected:String = "App selected: \n"
+            let app_selected:String = currentLanguage[app_RPS_choice]
+            let message_pick_the_option:String = template_app_selected + app_selected
+            
+            let win_or_lose:String = should_Player_Win ? "Win" : "Lose"
+            let message_you_should_try_to:String = "You should try to:\n\(win_or_lose)"
+            
             
             Text("Round: \(currentRound)")
                 .roundTitleCount()
-            Text(previousScore) // DEBUG ONLY
             Text("Score: \(score_player_victories_count)")
-            Text("\(message)")
+            Text("\(message_pick_the_option)")
+                .appSelected_style()
+            Text(message_you_should_try_to)
+                .multilineTextAlignment(.center)
+                .appSelected_style()
+            
+        }
+    }
+    
+    var debugInformation:some View {
+        VStack {
+            Text("debug | bot chose: \(app_RPS_choice)")
+            Text(previousScore) // DEBUG ONLY
+            
         }
     }
     
@@ -91,12 +103,6 @@ struct ContentView: View {
         
         switchToLang = useEnglish ? string_switchToJapanese : string_switchToEnglish
         currentLanguage = useEnglish ? englishRPS : japaneseRPS
-//
-//        if useEnglish {
-//            currentLanguage = englishRPS
-//        } else {
-//            currentLanguage = japaneseRPS
-//        }
     }
     
     func playerSelectChoice_fightTime(_ choice:rockPaperScissors) {
@@ -109,28 +115,33 @@ struct ContentView: View {
             
         }
         
+        
+        var didPlayerWin:Bool = false
         switch rpsRawValue {
         // Rock
         case 0:
             if app_RPS_choice == 2 {
-                victoryMeansPlusOneToScore()
+                didPlayerWin = true
             }
         // Paper
         case 1:
             if app_RPS_choice == 0 {
-                victoryMeansPlusOneToScore()
+                didPlayerWin = true
             }
         // Scissors
         case 2:
             if app_RPS_choice == 1 {
-                victoryMeansPlusOneToScore()
+                didPlayerWin = true
             }
             
         default:
             break
         }
+                
+        if didPlayerWin == should_Player_Win {
+            victoryMeansPlusOneToScore()
+        }
         
-        nextRound()
     }
     
     func victoryMeansPlusOneToScore() {
@@ -147,29 +158,14 @@ struct ContentView: View {
         }
         
         app_RPS_choice = Int.random(in: 0...2) // CS #3
+        should_Player_Win = Bool.random()
         
         currentRound += 1
     }
+    
+    
+    
 }
-
-//struct headsUpDisplay: View {
-//    var currentRound: Int
-//    var previousScore: String
-//    var score_player_victories_count: Int
-//    var should_player_win:Bool
-//
-//    var message_win_or_lose:String = "Win"
-//
-//    var body: some View {
-//        Text("Round: \(currentRound)")
-//            .roundTitleCount()
-//        Text(previousScore) // DEBUG ONLY
-//        Text("Score: \(score_player_victories_count)")
-//
-//
-//    }
-//}
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -188,6 +184,10 @@ extension View {
     
     func settings_style() -> some View {
         modifier(SettingsStyle())
+    }
+    
+    func appSelected_style() -> some View {
+        modifier(AppSelectedStyle())
     }
 }
 
@@ -222,6 +222,16 @@ struct SettingsStyle:ViewModifier {
             .frame(maxWidth: 100)
             .background(Color.red)
             .foregroundColor(Color.white)
+            .clipShape(Capsule())
+    }
+}
+
+struct AppSelectedStyle: ViewModifier {
+    func body(content:Content) -> some View {
+        content
+            .multilineTextAlignment(.center)
+            .frame(maxWidth: 160,maxHeight: 50)
+            .background(Color.cyan)
             .clipShape(Capsule())
     }
 }

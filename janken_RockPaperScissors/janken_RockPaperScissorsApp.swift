@@ -28,3 +28,10 @@ enum resultRPS:String {
     case lost = "Lost :'("
     case tie = "Tie :O"
 }
+
+enum resultOverall:String {
+    case win
+    case lost
+    case tie
+}
+
