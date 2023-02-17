@@ -15,8 +15,14 @@ struct ContentView: View {
     @State private var app_RPS_choice: Int = Int.random(in: 0...2) // CS #2
     @State private var shouldPlayerWin: Bool = Bool.random() // CS #2
     
+    @State private var currentRound: Int = 1
+    
     var body: some View {
-        listRPS
+        VStack {
+            Text("Round: \(currentRound)")
+                .roundTitleCount()
+            listRPS
+        }
     }
     
     // CS #1
@@ -33,7 +39,7 @@ struct ContentView: View {
                 } label: {
                     Text("\(itemValue)")
                 }
-                .padding(30)
+                .buttonRPS_style()
                 
             }
         }
@@ -60,5 +66,38 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+extension View {
+    func roundTitleCount() -> some View {
+        modifier(RoundTitleCount())
+    }
+    
+    func buttonRPS_style() -> some View {
+        modifier(ButtonRPSstyle())
+    }
+}
+
+struct RoundTitleCount: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(50)
+            .frame(maxWidth: 250, maxHeight: 50)
+            .font(.title)
+            .background(Color.indigo)
+            .foregroundColor(Color.white)
+            .clipShape(Capsule())
+    }
+}
+
+struct ButtonRPSstyle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .padding(20)
+            .frame(maxWidth: 150, maxHeight: 75)
+            .background(Color.blue)
+            .foregroundColor(Color.white)
+            .clipShape(Capsule())
     }
 }
