@@ -15,7 +15,7 @@ struct ContentView: View {
     @State private var useEnglish:Bool = false
     
     @State private var app_RPS_choice: Int = Int.random(in: 0...2) // CS #2
-    @State private var shouldPlayerWin: Bool = Bool.random() // CS #2 & CS #3
+    @State private var should_Player_Win: Bool = Bool.random() // CS #2 & CS #3
     
     @State private var currentRound: Int = 1
     
@@ -25,7 +25,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             
-            scoreboard(currentRound: currentRound, previousScore: previousScore, score_player_victories_count: score_player_victories_count)
+            headsUpDisplay
             listRPS
             
             Button("\(switchToLang)") {
@@ -62,6 +62,23 @@ struct ContentView: View {
         }
     }
     
+    // CS #4
+    var headsUpDisplay: some View {
+
+        VStack {
+            let template_app_selected:String = "App selected: "
+            var win_or_lose:String = should_Player_Win ? "Win" : "Lose"
+            var message:String = template_app_selected + win_or_lose
+            
+            Text("Round: \(currentRound)")
+                .roundTitleCount()
+            Text(previousScore) // DEBUG ONLY
+            Text("Score: \(score_player_victories_count)")
+            Text("\(message)")
+        }
+    }
+    
+    // PS #1
     func switchLanguage() -> () {
         let englishRPS:[String] = ["Rock", "Paper", "Scissor"]
         let japaneseRPS:[String] = ["グー (guu)","パー (paa)" ,"チョキ (choki)"]
@@ -135,19 +152,23 @@ struct ContentView: View {
     }
 }
 
-struct scoreboard: View {
-    var currentRound: Int
-    var previousScore: String
-    var score_player_victories_count: Int
-    
-    
-    var body: some View {
-        Text("Round: \(currentRound)")
-            .roundTitleCount()
-        Text(previousScore)
-        Text("Score: \(score_player_victories_count)")
-    }
-}
+//struct headsUpDisplay: View {
+//    var currentRound: Int
+//    var previousScore: String
+//    var score_player_victories_count: Int
+//    var should_player_win:Bool
+//
+//    var message_win_or_lose:String = "Win"
+//
+//    var body: some View {
+//        Text("Round: \(currentRound)")
+//            .roundTitleCount()
+//        Text(previousScore) // DEBUG ONLY
+//        Text("Score: \(score_player_victories_count)")
+//
+//
+//    }
+//}
 
 
 struct ContentView_Previews: PreviewProvider {

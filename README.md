@@ -13,11 +13,11 @@ ___
 **User Story**
 - this is provided by specifications
 
-- 1. Each turn of the game the app will randomly pick either rock, paper, or scissors.
-- 2. Each turn the app will alternate between prompting the player to win or lose.
-- 3. The player must then tap the correct move to win or lose the game.
-- 4. If they are correct they score a point; otherwise they lose a point.
-- 5. The game ends after 10 questions, at which point their score is shown.
+1. Each turn of the game the app will randomly pick either rock, paper, or scissors.
+2. Each turn the app will alternate between prompting the player to win or lose.
+3. The player must then tap the correct move to win or lose the game.
+4. If they are correct they score a point; otherwise they lose a point.
+5. The game ends after 10 questions, at which point their score is shown.
 
 - If the app chose “Rock” and “Win” the player would need to choose “Paper”, but if the app chose “Rock” and “Lose” the player would need to choose “Scissors”.
 ___
@@ -38,7 +38,7 @@ Have the language options either be in Japanese or English!
         - https://www.tofugu.com/japan/janken/
 
 - [ ] Create two enums for English and Japanese versions of rock, paper, scissor
-- [ ] Create toggle button that switches between English and Japanese
+- [ ] 1. Create toggle button that switches between English and Japanese
     - This might need a separate enum for English and Japanese?
     - Maybe use tenary operation if it works?
         - Possibly, use @State and a bool to switch between languages
