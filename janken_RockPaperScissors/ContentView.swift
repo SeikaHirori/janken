@@ -20,15 +20,12 @@ struct ContentView: View {
     @State private var currentRound: Int = 1
     
     @State private var score_player_victories_count:Int = 0
-    @State private var previousScore:String = "" // Track score for debugging purposes
+    @State private var previousScore: String = "" // Track score for debugging purposes
     
     var body: some View {
         VStack {
-            Text("Round: \(currentRound)")
-                .roundTitleCount()
-            Text(previousScore)
-            Text("Score: \(score_player_victories_count)")
-
+            
+            scoreboard(currentRound: currentRound, previousScore: previousScore, score_player_victories_count: score_player_victories_count)
             listRPS
             
             Button("\(switchToLang)") {
@@ -138,6 +135,19 @@ struct ContentView: View {
     }
 }
 
+struct scoreboard: View {
+    var currentRound: Int
+    var previousScore: String
+    var score_player_victories_count: Int
+    
+    
+    var body: some View {
+        Text("Round: \(currentRound)")
+            .roundTitleCount()
+        Text(previousScore)
+        Text("Score: \(score_player_victories_count)")
+    }
+}
 
 
 struct ContentView_Previews: PreviewProvider {
