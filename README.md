@@ -1,7 +1,8 @@
 # Janken「じゃんけんぽん」| Rock, Papers, Scissors
 
 **Reflection:**
-- TBA at [SeikaHirori.blogspot.com](SeikaHirori.blogspot.com)
+- Mirror #1: TBA at [SeikaHirori.blogspot.com](SeikaHirori.blogspot.com)
+- Mirror #2: TBA on [SeikaHirori.github.io](SeikaHirori.github.io)
 
 ***House Keeping***
 
@@ -39,13 +40,12 @@ Have the language options either be in Japanese or English!
     - This comes through as a toggle.
     - Info on Janken and eng-japanese translation:
         - https://www.tofugu.com/japan/janken/
-
-- [-] Create two enums for English and Japanese versions of rock, paper, scissor
-    - Created an array of strings for both languages as it is logically easier to handle at the moment.
-        - Plus for scaling, it'll be easier if additional languages are added.
 - [x] 1. Create toggle button that switches between English and Japanese
     - This might need a separate enum for English and Japanese?
     - Maybe use tenary operation if it works?
         - Possibly, use @State and a bool to switch between languages
             - Limitations: This only works for two languages. A different work around would be needed when three or more languages are options.
     - Placement to be determined(TBD). Possible placement: top-right(top trailing)?
+- [x] Create two enums for English and Japanese versions of rock, paper, scissor
+    - Created an array of strings for both languages as it is logically easier to handle at the moment.
+        - Plus for scaling, it'll be easier if additional languages are added.
