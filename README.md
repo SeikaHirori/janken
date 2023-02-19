@@ -1,4 +1,4 @@
-# Janken「じゃんけんぽん」| Rock, Papers, Scissors
+# Janken「じゃんけん」| Rock, Papers, Scissors
 
 **Reflection:**
 - Mirror #1: TBA at [SeikaHirori.blogspot.com](SeikaHirori.blogspot.com)
