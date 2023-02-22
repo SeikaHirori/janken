@@ -1,7 +1,7 @@
 # Janken「じゃんけん」| Rock, Papers, Scissors
 
 **Reflection:**
-- Mirror #1: TBA at [SeikaHirori.blogspot.com](SeikaHirori.blogspot.com)
+- Mirror #1: Blogger - [https://seikahirori.blogspot.com/2023/02/janken-reflection-post.html](https://seikahirori.blogspot.com/2023/02/janken-reflection-post.html)
 - Mirror #2: TBA on [SeikaHirori.github.io](SeikaHirori.github.io)
 
 ***House Keeping***
